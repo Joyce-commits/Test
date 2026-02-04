@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <title>Contact Us - Plantofibea</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="plant.png" type="img">
+</head>
+
+<body>
+    <div class="logo">
+        <img class="logoimg" src="plant.png">
+    </div>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a class="active" href="contact.html">Contact us</a>
+    </div>
+    <br>
+    <form>
+        <fieldset>
+            <legend class="titleform"><b>Contact Us<b></legend>
+            <h2>
+                <label class="text">Enter your Name:</label>
+                <input type="text" name="Name">
+                <h4 class="text">Our Gmail account - "Joyce@gmail.com"</h4>
+                <label class="text">Gmail Account Id:</label>
+                <input type="email" name="email">
+                <br>
+                <label class="text">Complaints (Optional):</label>
+                <br>
+                <textarea class="text"></textarea>
+                <br>
+                <label class="text">Rate the Website</label>
+                <input type="radio" name="Gender" value="male" id="gender">1
+                <input type="radio" name="Gender" value="male" id="gender">2
+                <input type="radio" name="Gender" value="male" id="gender">3
+                <input type="radio" name="Gender" value="male" id="gender">4
+                <input type="radio" name="Gender" value="male" id="gender">5
+                <br>
+            </h2>
+            <center><a onclick="submit()" class="submit" href="thanks.html">Submit</a></center>
+            <script>
+                function submit() {
+                    alert("Submit for sure?");
+                } 
+            </script>
+        </fieldset>
+    </form>
+    <section class="footer">
+        &copy All rights are reserved by Ansh Gandhi
+    </section>
+</body>
+
+</html>

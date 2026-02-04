@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home - Plantofibea</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="plant.png" type="img">
+</head>
+
+<body>
+    <div class="logo">
+        <img class="logoimg" src="plant.png">
+    </div>
+    <div class="navbar">
+        <a class="active" href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact us</a>
+    </div>
+    <br>
+    <center><img class="jungleimg" src="Jungle.jpeg">
+        <br>
+        <button class="button" onclick="plantintro()">Read</button>
+        <br>
+        <div id="introtext"></div>
+
+        <br>
+        <img class="jungleimg" src="tree.jpeg">
+        <br>
+        <button class="button" onclick="plantsecond()">Read</button>
+        <br>
+        <div id="introsecond"></div>
+        <br>
+        <section class="footer">
+            &copy All rights are reserved by Joyce
+        </section>
+
+        <script>
+            function plantintro() {
+                document.getElementById("introtext").innerHTML = "Plants are mainly multicellular organisms, predominantly photosynthetic eukaryotes of the kingdom Plantae. Historically, plants were treated as one of two kingdoms including all living things that were not animals, and all algae and fungi were treated as plants.";
+            }
+            function plantsecond() {
+                document.getElementById("introsecond").innerHTML = "Carbon Dioxide is taken in by plants and replaced with oxygen. This makes plants very useful.";
+            }
+        </script>
+
+
+    
+</body>
+
+</html>

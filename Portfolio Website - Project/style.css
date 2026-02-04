@@ -1,0 +1,131 @@
+.navbar {
+    background-color: black;
+    overflow: hidden;
+    border-radius: 10px;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    float: left;
+    background-color: black;
+    border-radius: 10px;
+    height: 100px;
+    width: 100px;
+}
+
+.logoimg {
+    height: 90px;
+    widows: 90px;
+}
+
+.thanksgif {
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+}
+
+.navbar a {
+    color: white;
+    font-size: 35px;
+    text-decoration: none;
+    text-align: center;
+    padding: 30px 40px;
+    overflow: hidden;
+    float: left;
+    font-family: sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar a:hover {
+    font-size: 35px;
+    background-color: green;
+    color: black;
+    border-radius: 10px;
+}
+
+.navbar a.active {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+}
+
+body {
+    background-color: lightskyblue;
+}
+
+.jungleimg {
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+    height: 400px;
+    width: 500px;
+}
+
+.button {
+    height: 40px;
+    width: 70px;
+    font-size: 20px;
+}
+
+#introtext {
+    font-size: 30px;
+}
+
+#introsecond {
+    font-size: 30px;
+}
+
+.footer {
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+}
+
+.me {
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+    border-color: black;
+    border-width: 10px;
+}
+
+.submit {
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    text-align: center;
+    padding: 30px 40px;
+    overflow: hidden;
+    float: left;
+    font-family: sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    border-radius: 10px;
+    width: 200px;
+}
+
+.submit:hover {
+    font-size: 30px;
+    background-color: green;
+    color: black;
+    border-radius: 10px;
+    width: 200px;
+}
+
+.titleform {
+    font-size: 35px;
+    font-family: sans-serif;
+}
+
+.text {
+    font-family: sans-serif; }

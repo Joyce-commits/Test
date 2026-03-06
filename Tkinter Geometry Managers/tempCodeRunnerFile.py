@@ -1,0 +1,1 @@
+frame1.pack(side=TOP)

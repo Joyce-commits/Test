@@ -1,0 +1,64 @@
+/* style.css - Simple Portfolio Styles */
+.hero {
+    min-height: 60vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://framerusercontent.com/images/Ot9q0QjR45DcdJ6NS3zy0KUn3I.jpg') center/cover;
+}
+
+.pfp {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    transition: 0.2s;
+}
+
+.hide {
+    display: none;
+}
+
+/* Each section takes full screen height */
+.hero,
+section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Keep text centered only where you already used text-center */
+section .container {
+    width: 100%;
+}
+
+
+.hero .container,
+section .container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+/* Taller + center-aligned SKILLS and PROJECTS */
+#skills .card,
+#projects .card,
+#projects button {
+    min-height: 500px;
+    padding: 20px;
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* vertical center */
+    align-items: center;
+    /* horizontal center */
+    text-align: center;
+}
+
+/* Keep CONTACT card normal */
+#contact .card {
+    min-height: auto;
+}

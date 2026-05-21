@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar with CSS Grid Layout</title>
+    <style>
+
+        .grid-container{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-areas: 
+                "header header header"
+                "nav nav nav"
+                "menu main main"
+                "menu main main"
+                "footer footer footer";
+            background-color: #333;
+        }
+        .grid-container > div {
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .grid-item1{
+            grid-area: header;
+            background-color: #ec8787;
+        }
+        .grid-item2{
+            grid-area: nav;
+            background-color: #effd84;
+        }
+        .grid-item3{
+            grid-area: menu;
+            background-color: #bae994;
+        }
+        .grid-item4{
+            grid-area: main;
+            background-color: #50d3f4;
+        }
+        .grid-item5{
+            grid-area: footer;
+            background-color: #ed2091;
+        }
+    
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background-color: #333;
+        }
+        .navbar a {
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #eaf3a4;
+            color: black;
+        }
+
+        .mySlides{
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+
+        <div class="grid-item1">
+            <div>
+              
+                    
+            </div>
+            
+        </div>
+        <div class="grid-item2">
+            <div class="navbar">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        <div class="grid-item3">Menu</div>
+        <div class="grid-item4">
+            <h1>7 Wonders of the World</h1>
+            <img class="mySlides" src="Taj_Mahal.PNG">
+            <img class="mySlides" src="christ.jpeg">
+            <img class="mySlides" src="Chichén Itzá.jpeg">
+            <img class="mySlides" src="China_Wall.PNG">
+            <img class="mySlides" src="Coloseenum.PNG">
+            <img class="mySlides" src="Petra.jpeg">
+            <img class="mySlides" src="Machu_Pichu.PNG">
+             
+        
+        </div>
+        <div class="grid-item5">Footer</div>
+    
+    </div>
+
+    <script>
+        // Automatic Slideshow - change image every 3 seconds
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 3000);
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --primary-color: #4a90e2;
+            --credit-color: #2ecc71;
+            --debit-color: #e74c3c;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #2c3e50;
+        }
+
+        .balance-card {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .balance-card h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+
+        .balance-amount {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .currency-symbol {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7f8c8d;
+            font-weight: 600;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 12px 12px 30px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="number"]:focus {
+            border-color: var(--primary-color);
+        }
+
+        .error-message {
+            color: var(--debit-color);
+            font-size: 13px;
+            margin-top: 6px;
+            height: 18px;
+            visibility: hidden;
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 24px;
+        }
+
+        button {
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .btn-credit {
+            background-color: var(--credit-color);
+        }
+
+        .btn-debit {
+            background-color: var(--debit-color);
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .history-section h4 {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+            color: #7f8c8d;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .transaction-list {
+            list-style: none;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            background-color: #fafafa;
+            border-left: 4px solid transparent;
+        }
+
+        .transaction-item.credit {
+            border-left-color: var(--credit-color);
+        }
+
+        .transaction-item.debit {
+            border-left-color: var(--debit-color);
+        }
+
+        .item-amount {
+            font-weight: 600;
+        }
+
+        .item-amount.credit {
+            color: var(--credit-color);
+        }
+
+        .item-amount.debit {
+            color: var(--debit-color);
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Expense Tracker</h2>
+
+        <div class="balance-card">
+            <h3>Current Balance</h3>
+            <div class="balance-amount" id="balanceDisplay">$0.00</div>
+        </div>
+
+        <div class="input-group">
+            <label for="amountInput">Transaction Amount</label>
+            <div class="input-wrapper">
+                <span class="currency-symbol">$</span>
+                <input type="number" id="amountInput" placeholder="0.00" min="0.01" step="0.01">
+            </div>
+            <div class="error-message" id="errorMessage">Invalid amount entry.</div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-credit" onclick="handleTransaction('credit')">+ Credit</button>
+            <button class="btn-debit" onclick="handleTransaction('debit')">- Debit</button>
+        </div>
+
+        <div class="history-section">
+            <h4>History</h4>
+            <ul class="transaction-list" id="transactionList">
+                <!-- Dynamically populated -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let balance = 0.00;
+
+        const balanceDisplay = document.getElementById('balanceDisplay');
+        const amountInput = document.getElementById('amountInput');
+        const errorMessage = document.getElementById('errorMessage');
+        const transactionList = document.getElementById('transactionList');
+
+        function updateUI() {
+            balanceDisplay.textContent = `$${balance.toFixed(2)}`;
+        }
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.visibility = 'visible';
+        }
+
+        function clearError() {
+            errorMessage.style.visibility = 'hidden';
+        }
+
+        function handleTransaction(type) {
+            clearError();
+
+            const inputVal = amountInput.value.trim();
+            const amount = parseFloat(inputVal);
+
+            // Validation Rule 1: Field cannot be empty
+            if (inputVal === '') {
+                showError('Please enter an amount.');
+                return;
+            }
+
+            // Validation Rule 2: Must be a valid number and greater than 0
+            if (isNaN(amount) || amount <= 0) {
+                showError('Please enter a valid amount greater than zero.');
+                return;
+            }
+
+            // Validation Rule 3: Prevent overdrafts during debit operations
+            if (type === 'debit' && amount > balance) {
+                showError('Insufficient funds for this debit transaction.');
+                return;
+            }
+
+            // Process calculation
+            if (type === 'credit') {
+                balance += amount;
+            } else if (type === 'debit') {
+                balance -= amount;
+            }
+
+            // Record transaction to list
+            addTransactionToList(type, amount);
+
+            // Reset interface state
+            updateUI();
+            amountInput.value = '';
+        }
+
+        function addTransactionToList(type, amount) {
+            const li = document.createElement('li');
+            li.classList.add('transaction-item', type);
+
+            const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const typeLabel = type.charAt(0).toUpperCase() + type.slice(1);
+
+            li.innerHTML = `
+                <span>${typeLabel} (${timestamp})</span>
+                <span class="item-amount ${type}">${type === 'credit' ? '+' : '-'}$${amount.toFixed(2)}</span>
+            `;
+
+            // Prepend to show newest transactions first
+            transactionList.insertBefore(li, transactionList.firstChild);
+        }
+
+        // Initialize display
+        updateUI();
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
